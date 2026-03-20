@@ -1,6 +1,8 @@
 ---
 import SiteShell from '../components/SiteShell.astro';
 import { series } from '../data/site';
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/');
 ---
 <SiteShell lang="en" title="Gallery · Citrus Gallery" description="Series overview for Citrus Gallery">
   <section class="hero container">
@@ -23,11 +25,11 @@ import { series } from '../data/site';
               <button
                 class={`photo-card photo-trigger ${index === 0 ? 'photo-card-featured' : ''}`}
                 type="button"
-                data-image={image.src}
+                data-image={withBase(image.src.replace(/^\//, ''))}
                 data-caption={image.caption.en}
                 data-alt={`${item.title.en} ${index + 1}`}
               >
-                <img src={image.src} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
+                <img src={withBase(image.src.replace(/^\//, ''))} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
               </button>
             </figure>
           ))}
