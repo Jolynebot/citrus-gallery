@@ -21,7 +21,7 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
   <section class="section container">
     <div class="series-grid">
       {series.map((item) => (
-        <a class="series-card image-card" href={withBase(`zh/gallery/#${item.slug}`)} style={`background-image:url(${item.cover})`}>
+        <a class="series-card image-card" href={withBase(`zh/gallery/#${item.slug}`)} style={`background-image:url(${withBase(item.cover.replace(/^\//, ''))})`}>
           <div class="series-card-content">
             <h3>{item.title.zh}</h3>
             <p>{item.summary.zh}</p>
