@@ -72,7 +72,7 @@ export const series = [
       {
         src: '/gallery/under-the-stars/My%20Movie%207.mov',
         type: 'video',
-        poster: '/gallery/under-the-stars/cover.jpg',
+        poster: '/gallery/under-the-stars/My-Movie-7-poster.png',
         caption: {
           en: 'On my last night in Fairbanks, after days of bad weather and no luck with the aurora, it suddenly showed up.',
           zh: '在 Fairbanks 的最后一晚，前几天因为天气不好一直没看到极光，结果那天突然很惊喜地看见了。',
