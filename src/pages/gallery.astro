@@ -28,8 +28,13 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
                 data-image={withBase(image.src.replace(/^\//, ''))}
                 data-caption={image.caption.en}
                 data-alt={`${item.title.en} ${index + 1}`}
+                data-type={image.type || 'image'}
               >
-                <img src={withBase(image.src.replace(/^\//, ''))} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
+                {image.type === 'video' ? (
+                  <video src={withBase(image.src.replace(/^\//, ''))} muted playsinline preload="metadata" />
+                ) : (
+                  <img src={withBase(image.src.replace(/^\//, ''))} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
+                )}
               </button>
             </figure>
           ))}
@@ -44,6 +49,7 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
     </form>
     <div class="lightbox-panel">
       <img id="lightbox-image-en" src="" alt="" />
+      <video id="lightbox-video-en" controls playsinline style="display:none"></video>
       <p id="lightbox-caption-en" class="lightbox-caption"></p>
     </div>
   </dialog>
@@ -51,6 +57,7 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
   <script>
     const lightbox = document.getElementById('lightbox-en');
     const image = document.getElementById('lightbox-image-en');
+    const video = document.getElementById('lightbox-video-en');
     const caption = document.getElementById('lightbox-caption-en');
     const triggers = document.querySelectorAll('.photo-trigger');
 
@@ -59,8 +66,21 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
         const src = trigger.getAttribute('data-image') || '';
         const alt = trigger.getAttribute('data-alt') || '';
         const text = trigger.getAttribute('data-caption') || '';
-        image.setAttribute('src', src);
-        image.setAttribute('alt', alt);
+        const type = trigger.getAttribute('data-type') || 'image';
+
+        if (type === 'video') {
+          image.style.display = 'none';
+          video.style.display = 'block';
+          video.setAttribute('src', src);
+        } else {
+          video.pause();
+          video.removeAttribute('src');
+          video.style.display = 'none';
+          image.style.display = 'block';
+          image.setAttribute('src', src);
+          image.setAttribute('alt', alt);
+        }
+
         caption.textContent = text;
         caption.style.display = text ? 'block' : 'none';
         lightbox.showModal();
@@ -70,8 +90,13 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
     lightbox?.addEventListener('click', (event) => {
       const panel = lightbox.querySelector('.lightbox-panel');
       if (panel && !panel.contains(event.target)) {
+        video.pause();
         lightbox.close();
       }
+    });
+
+    lightbox?.addEventListener('close', () => {
+      video.pause();
     });
   </script>
 </SiteShell>

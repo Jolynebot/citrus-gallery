@@ -58,6 +58,7 @@ export const series = [
     images: [
       {
         src: '/gallery/under-the-stars/cover.jpg',
+        type: 'image',
         caption: {
           en: 'The first Milky Way I waited on all night for — slowly coming into focus from a blur.',
           zh: '第一次蹲了一夜的银河，从模糊慢慢变清晰。',
@@ -65,7 +66,16 @@ export const series = [
       },
       {
         src: '/gallery/under-the-stars/e8c9f83760136934ae006375dae8fe8f.jpg',
+        type: 'image',
         caption: { en: '', zh: '' },
+      },
+      {
+        src: '/gallery/under-the-stars/My%20Movie%207.mov',
+        type: 'video',
+        caption: {
+          en: 'On my last night in Fairbanks, after days of bad weather and no luck with the aurora, it suddenly showed up.',
+          zh: '在 Fairbanks 的最后一晚，前几天因为天气不好一直没看到极光，结果那天突然很惊喜地看见了。',
+        },
       },
     ],
   },
