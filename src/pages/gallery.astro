@@ -1,0 +1,75 @@
+---
+import SiteShell from '../components/SiteShell.astro';
+import { series } from '../data/site';
+---
+<SiteShell lang="en" title="Gallery · Citrus Gallery" description="Series overview for Citrus Gallery">
+  <section class="hero container">
+    <span class="eyebrow">Gallery</span>
+    <h1>Staring at mountains<br />and the stars.</h1>
+
+  </section>
+  <section class="section container gallery-list">
+    {series.map((item) => (
+      <section class="series-detail" id={item.slug}>
+        <div class="section-heading">
+          <div>
+            <h2>{item.title.en}</h2>
+          </div>
+          <p>{item.summary.en}</p>
+        </div>
+        <div class="photo-grid">
+          {item.images.map((image, index) => (
+            <figure class={`photo-figure ${index === 0 ? 'photo-figure-featured' : ''}`}>
+              <button
+                class={`photo-card photo-trigger ${index === 0 ? 'photo-card-featured' : ''}`}
+                type="button"
+                data-image={image.src}
+                data-caption={image.caption.en}
+                data-alt={`${item.title.en} ${index + 1}`}
+              >
+                <img src={image.src} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
+              </button>
+            </figure>
+          ))}
+        </div>
+      </section>
+    ))}
+  </section>
+
+  <dialog class="lightbox" id="lightbox-en">
+    <form method="dialog" class="lightbox-backdrop">
+      <button class="lightbox-close" aria-label="Close">×</button>
+    </form>
+    <div class="lightbox-panel">
+      <img id="lightbox-image-en" src="" alt="" />
+      <p id="lightbox-caption-en" class="lightbox-caption"></p>
+    </div>
+  </dialog>
+
+  <script>
+    const lightbox = document.getElementById('lightbox-en');
+    const image = document.getElementById('lightbox-image-en');
+    const caption = document.getElementById('lightbox-caption-en');
+    const triggers = document.querySelectorAll('.photo-trigger');
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const src = trigger.getAttribute('data-image') || '';
+        const alt = trigger.getAttribute('data-alt') || '';
+        const text = trigger.getAttribute('data-caption') || '';
+        image.setAttribute('src', src);
+        image.setAttribute('alt', alt);
+        caption.textContent = text;
+        caption.style.display = text ? 'block' : 'none';
+        lightbox.showModal();
+      });
+    });
+
+    lightbox?.addEventListener('click', (event) => {
+      const panel = lightbox.querySelector('.lightbox-panel');
+      if (panel && !panel.contains(event.target)) {
+        lightbox.close();
+      }
+    });
+  </script>
+</SiteShell>

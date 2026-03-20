@@ -1,46 +1,29 @@
-# Astro Starter Kit: Basics
+# Citrus Gallery
 
-```sh
-npm create astro@latest -- --template basics
+Photography portfolio skeleton for Yuzu.
+
+## Current scope
+
+- Astro static site
+- Dark cinematic visual direction
+- Bilingual structure (`/` for English, `/zh/` for Chinese)
+- Placeholder series pages:
+  - Mountains
+  - Under the Stars
+  - Sunset
+  - Golden Hour Joy
+  - Human Stories
+
+## Run locally
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Next steps
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Add real photos and series cover images
+2. Replace placeholder copy with final bilingual text
+3. Add GitHub Pages deployment config
+4. Optional: lightbox, series detail pages, custom domain

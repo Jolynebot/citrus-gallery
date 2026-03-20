@@ -1,11 +1,42 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import SiteShell from '../components/SiteShell.astro';
+import { series, site } from '../data/site';
 ---
+<SiteShell lang="en" title="Citrus Gallery" description={site.description.en}>
+  <section class="hero container">
+    <span class="eyebrow">Citrus Gallery</span>
+    <h1>Staring at mountains<br />and the stars.</h1>
+    <p>
+      Citrus Gallery is where I share photographs I love — quiet mountains, night skies, water at dusk,
+      and small human moments that stay with me.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="/gallery">Enter gallery</a>
+      <a class="button" href="/zh/">切换中文</a>
+    </div>
+  </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <section class="section container">
+    <div class="series-grid">
+      {series.map((item) => (
+        <a class="series-card image-card" href={`/gallery#${item.slug}`} style={`background-image:url(${item.cover})`}>
+          <div class="series-card-content">
+            <h3>{item.title.en}</h3>
+            <p>{item.summary.en}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">About</span>
+      </div>
+    </div>
+    <div class="about-panel">
+      Made by Yuzu and her bot Jolyne.
+    </div>
+  </section>
+</SiteShell>

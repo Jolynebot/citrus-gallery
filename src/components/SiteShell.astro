@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+interface Props {
+  lang: 'en' | 'zh';
+  title: string;
+  description: string;
+}
+const { lang, title, description } = Astro.props;
+const nav = site.nav[lang];
+---
+<Layout title={title} description={description} lang={lang}>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href={lang === 'zh' ? '/zh/' : '/'}>
+        <span class="brand-title">Citrus Gallery</span>
+      </a>
+      <nav class="nav">
+        {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer class="footer">
+    <div class="container">
+      Citrus Gallery · Yuzu · Jolyne
+    </div>
+  </footer>
+</Layout>
