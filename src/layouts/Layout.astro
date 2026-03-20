@@ -195,11 +195,7 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
   }
 
   .series-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top, rgba(240,179,91,.18), transparent 36%);
-    z-index: -2;
+    display: none;
   }
 
   .series-card.image-card {
