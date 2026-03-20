@@ -19,6 +19,11 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
   </section>
 
   <section class="section container">
+    <div class="section-heading">
+      <div>
+        <h2>系列</h2>
+      </div>
+    </div>
     <div class="series-grid">
       {series.map((item) => (
         <a class="series-card image-card" href={withBase(`zh/gallery/#${item.slug}`)} style={`background-image:url(${withBase(item.cover.replace(/^\//, ''))})`}>
