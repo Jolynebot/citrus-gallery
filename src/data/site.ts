@@ -6,16 +6,16 @@ export const site = {
   },
   nav: {
     en: [
-      { label: 'Home', href: '/' },
-      { label: 'Gallery', href: '/gallery' },
-      { label: 'About', href: '/about' },
-      { label: '中文', href: '/zh/' },
+      { label: 'Home', href: '' },
+      { label: 'Gallery', href: 'gallery' },
+      { label: 'About', href: 'about' },
+      { label: '中文', href: 'zh/' },
     ],
     zh: [
-      { label: '首页', href: '/zh/' },
-      { label: '作品', href: '/zh/gallery' },
-      { label: '关于', href: '/zh/about' },
-      { label: 'EN', href: '/' },
+      { label: '首页', href: 'zh/' },
+      { label: '作品', href: 'zh/gallery' },
+      { label: '关于', href: 'zh/about' },
+      { label: 'EN', href: '' },
     ],
   },
 };
