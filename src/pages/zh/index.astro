@@ -1,7 +1,8 @@
 ---
 import SiteShell from '../../components/SiteShell.astro';
 import { series, site } from '../../data/site';
-const BASE = import.meta.env.BASE_URL;
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/');
 ---
 <SiteShell lang="zh" title="Citrus Gallery" description={site.description.zh}>
   <section class="hero container">
@@ -12,15 +13,15 @@ const BASE = import.meta.env.BASE_URL;
       还有那些让我想停下来多看一会儿的人间瞬间。
     </p>
     <div class="hero-actions">
-      <a class="button primary" href={`${BASE}zh/gallery`}>进入作品</a>
-      <a class="button" href={BASE}>Switch to English</a>
+      <a class="button primary" href={withBase('zh/gallery/')}>进入作品</a>
+      <a class="button" href={withBase('')}>Switch to English</a>
     </div>
   </section>
 
   <section class="section container">
     <div class="series-grid">
       {series.map((item) => (
-        <a class="series-card image-card" href={`${BASE}zh/gallery#${item.slug}`} style={`background-image:url(${item.cover})`}>
+        <a class="series-card image-card" href={withBase(`zh/gallery/#${item.slug}`)} style={`background-image:url(${item.cover})`}>
           <div class="series-card-content">
             <h3>{item.title.zh}</h3>
             <p>{item.summary.zh}</p>

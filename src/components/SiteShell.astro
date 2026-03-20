@@ -8,13 +8,14 @@ interface Props {
   description: string;
 }
 const { lang, title, description } = Astro.props;
-const BASE = import.meta.env.BASE_URL;
-const nav = site.nav[lang].map((item) => ({ ...item, href: `${BASE}${item.href}` }));
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/');
+const nav = site.nav[lang].map((item) => ({ ...item, href: withBase(item.href) }));
 ---
 <Layout title={title} description={description} lang={lang}>
   <header class="site-header">
     <div class="container site-header-inner">
-      <a class="brand" href={lang === 'zh' ? `${BASE}zh/` : BASE}>
+      <a class="brand" href={lang === 'zh' ? withBase('zh/') : withBase('')}>
         <span class="brand-title">Citrus Gallery</span>
       </a>
       <nav class="nav">
