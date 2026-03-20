@@ -29,9 +29,10 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
                 data-caption={image.caption.en}
                 data-alt={`${item.title.en} ${index + 1}`}
                 data-type={image.type || 'image'}
+                data-poster={image.poster ? withBase(image.poster.replace(/^\//, '')) : ''}
               >
                 {image.type === 'video' ? (
-                  <video src={withBase(image.src.replace(/^\//, ''))} muted playsinline preload="metadata" />
+                  <video src={withBase(image.src.replace(/^\//, ''))} poster={image.poster ? withBase(image.poster.replace(/^\//, '')) : ''} muted playsinline preload="metadata" />
                 ) : (
                   <img src={withBase(image.src.replace(/^\//, ''))} alt={`${item.title.en} ${index + 1}`} loading="lazy" />
                 )}
@@ -67,11 +68,13 @@ const withBase = (path = '') => `${BASE}/${path}`.replace(/\/+$|(?<!:)\/\//g, '/
         const alt = trigger.getAttribute('data-alt') || '';
         const text = trigger.getAttribute('data-caption') || '';
         const type = trigger.getAttribute('data-type') || 'image';
+        const poster = trigger.getAttribute('data-poster') || '';
 
         if (type === 'video') {
           image.style.display = 'none';
           video.style.display = 'block';
           video.setAttribute('src', src);
+          if (poster) video.setAttribute('poster', poster);
         } else {
           video.pause();
           video.removeAttribute('src');
