@@ -186,7 +186,13 @@ export const series = [
     cover: '/gallery/on-film/cover.svg',
     images: [
       { src: '/gallery/on-film/cover.svg', caption: { en: '', zh: '' } },
-      { src: '/gallery/on-film/aa9a1389-2988-4258-b723-d7e660b79bcb.jpg', caption: { en: '', zh: '' } },
+      {
+        src: '/gallery/on-film/aa9a1389-2988-4258-b723-d7e660b79bcb.jpg',
+        caption: {
+          en: 'The light caught her while she was taking a photo.',
+          zh: '拍照的人，也被光线拍了一下。',
+        },
+      },
     ],
   },
 ];
