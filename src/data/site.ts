@@ -172,4 +172,20 @@ export const series = [
       { src: '/gallery/human-stories/DSCF8706.jpg', caption: { en: '', zh: '' } },
     ],
   },
+  {
+    slug: 'on-film',
+    title: { en: 'On Film', zh: '胶片' },
+    summary: {
+      en: 'Small moments kept on film.',
+      zh: '用胶片留下来的小瞬间。',
+    },
+    intro: {
+      en: 'Film photos, slower and softer, kept as they were.',
+      zh: '一些更慢、更软一点的瞬间，被胶片留下来。',
+    },
+    cover: '/gallery/on-film/cover.svg',
+    images: [
+      { src: '/gallery/on-film/cover.svg', caption: { en: '', zh: '' } },
+    ],
+  },
 ];
