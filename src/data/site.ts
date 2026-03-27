@@ -183,7 +183,7 @@ export const series = [
       en: 'Film photos, slower and softer, kept as they were.',
       zh: '一些更慢、更软一点的瞬间，被胶片留下来。',
     },
-    cover: '/gallery/on-film/cover.svg',
+    cover: '/gallery/on-film/aa9a1389-2988-4258-b723-d7e660b79bcb.jpg',
     images: [
       { src: '/gallery/on-film/cover.svg', caption: { en: '', zh: '' } },
       {
