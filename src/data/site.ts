@@ -128,13 +128,6 @@ export const series = [
           zh: '像画一样的夜色。',
         },
       },
-      {
-        src: '/gallery/sunset/efd62a3a-b953-4fc1-90fa-c65cbc8c0a02.jpg',
-        caption: {
-          en: '',
-          zh: '',
-        },
-      },
     ],
   },
   {
@@ -154,6 +147,7 @@ export const series = [
       { src: '/gallery/golden-hour-joy/DSCF2034.jpg', caption: { en: '', zh: '' } },
       { src: '/gallery/golden-hour-joy/DSCF4174.jpg', caption: { en: '', zh: '' } },
       { src: '/gallery/golden-hour-joy/IMG_6929.jpg', caption: { en: '', zh: '' } },
+      { src: '/gallery/sunset/efd62a3a-b953-4fc1-90fa-c65cbc8c0a02.jpg', caption: { en: '', zh: '' } },
     ],
   },
   {
